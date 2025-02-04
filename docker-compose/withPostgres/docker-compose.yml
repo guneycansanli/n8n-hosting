@@ -3,6 +3,7 @@ version: '3.8'
 volumes:
   db_storage:
   n8n_storage:
+  caddy_data:
 
 services:
   caddy:
@@ -13,8 +14,8 @@ services:
       - "443:443"
     volumes:
       - caddy_data:/data
-      - caddy_config:/config
-      - caddy_config/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy_config:/config
+      - ./Caddyfile:/etc/caddy/Caddyfile
   postgres:
     image: postgres:16
     restart: always
