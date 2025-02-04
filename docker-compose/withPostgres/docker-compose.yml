@@ -14,10 +14,8 @@ services:
       - "443:443"
     volumes:
       - caddy_data:/data
-      - ./caddy_config:/config
-      - type: bind
-        source: ./caddy_config/Caddyfile
-        target: /etc/caddy/Caddyfile
+      - /root/caddy_config/Caddyfile:/config
+      - /root/caddy_config/Caddyfile:/etc/caddy/Caddyfile
   postgres:
     image: postgres:16
     restart: always
