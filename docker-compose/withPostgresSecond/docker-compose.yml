@@ -45,7 +45,7 @@ services:
     volumes:
       - n8n_storage:/home/node/.n8n
       - ${DATA_FOLDER}/local_files:/files
-       - ./certs:/certs 
+      - ./certs:/certs 
     depends_on:
       postgres:
         condition: service_healthy
