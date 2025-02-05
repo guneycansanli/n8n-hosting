@@ -36,8 +36,8 @@ services:
       - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
       - N8N_PROTOCOL=https
       - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
-      - N8N_SSL_CERT
-      - N8N_SSL_KEY
+      - N8N_SSL_CERT=/certs/cloudflare-origin.pem
+      - N8N_SSL_KEY=/certs/cloudflare-origin.key
     ports:
       - 5678:5678
     links:
@@ -45,6 +45,7 @@ services:
     volumes:
       - n8n_storage:/home/node/.n8n
       - ${DATA_FOLDER}/local_files:/files
+      - /root/certs/:/certs 
     depends_on:
       postgres:
         condition: service_healthy
