@@ -39,7 +39,7 @@ services:
       - N8N_SSL_CERT=/certs/cloudflare-origin.pem
       - N8N_SSL_KEY=/certs/cloudflare-origin.key
     ports:
-      - 5678:5678
+      - 443:5678
     links:
       - postgres
     volumes:
