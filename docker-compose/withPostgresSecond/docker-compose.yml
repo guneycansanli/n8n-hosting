@@ -34,8 +34,10 @@ services:
       - DB_POSTGRESDB_USER=${POSTGRES_NON_ROOT_USER}
       - DB_POSTGRESDB_PASSWORD=${POSTGRES_NON_ROOT_PASSWORD}
       - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
-      - N8N_PROTOCOL=http
+      - N8N_PROTOCOL=https
       - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
+      - N8N_SSL_CERT=/certs/cloudflare-cert.pem
+      - N8N_SSL_KEY=/certs/cloudflare-key.pem
     ports:
       - 5678:5678
     links:
@@ -43,6 +45,7 @@ services:
     volumes:
       - n8n_storage:/home/node/.n8n
       - ${DATA_FOLDER}/local_files:/files
+      - /etc/n8n-cf-ssl/:/certs
     depends_on:
       postgres:
         condition: service_healthy
