@@ -38,6 +38,7 @@ services:
       - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
       - N8N_SSL_CERT=/certs/cloudflare-origin.pem
       - N8N_SSL_KEY=/certs/cloudflare-origin.key
+      - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
     ports:
       - 443:5678
     links:
